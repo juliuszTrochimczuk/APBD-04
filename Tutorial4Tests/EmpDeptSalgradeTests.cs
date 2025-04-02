@@ -65,7 +65,7 @@ public class EmpDeptSalgradeTests
         var emps = Database.GetEmps();
         var depts = Database.GetDepts();
 
-        var result = emps.Join(depts, d => d.DeptNo, e => e.DeptNo, (d, e) => new {EName = d.EName, DName = e.DName}).ToList(); 
+        var result = emps.Join(depts, d => d.DeptNo, e => e.DeptNo, (d, e) => new {d.EName, e.DName}).ToList(); 
 
         Assert.Contains(result, r => r.DName == "SALES" && r.EName == "ALLEN");
     }
