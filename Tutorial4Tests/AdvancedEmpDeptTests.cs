@@ -95,7 +95,7 @@ public class AdvancedEmpDeptTests
     {
         var emps = Database.GetEmps();
 
-        var result = emps.Join(emps, e1 => e1.EmpNo, e2 => e2.Mgr, (e1, e2) => new {e1, e2}).Select(e => new {Employee = e.e1.EName, Manager = e.e2.EName});
+        var result = emps.Join(emps, e1 => e1.EmpNo, e2 => e2.Mgr, (e1, e2) => new {e1, e2}).Select(e => new {Employee = e.e1.EName, Manager = e.e2.EName}).ToList();
         
         Assert.Contains(result, r => r.Employee == "SMITH" && r.Manager == "FORD");
     }
@@ -123,6 +123,6 @@ public class AdvancedEmpDeptTests
 
         //var result = null; 
         //
-        //Assert.Contains(result, r => r.EName == "ALLEN" && r.DName == "SALES" && r.Grade == 3);
+        //  Assert.Contains(result, r => r.EName == "ALLEN" && r.DName == "SALES" && r.Grade == 3);
     }
 }
